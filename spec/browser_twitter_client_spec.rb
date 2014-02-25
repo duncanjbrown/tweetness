@@ -28,15 +28,21 @@ describe BrowserTwitter::Client do
       @client.save_tweet(tweets.first)
       Tweet.count.should be 1
     end 
+
+    it "only saves a tweet with a url" do 
+      tweet = build(:twitter_tweet)
+      t = @client.save_tweet(tweet)
+      Tweet.count.should be 0
+    end
   end
 
   describe "#get_tweets!" do 
 
-    it "fetches a bunch of twueets and saves them to the database" do 
+    it "fetches a bunch of tweets and saves them to the database" do 
       Tweet.count.should be 0
       collected_count = @client.get_tweets.count # get the count
       @client.get_tweets!
-      Tweet.count.should eq(collected_count)
+      Tweet.count.should > 100
     end
      
   end

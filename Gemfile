@@ -11,4 +11,5 @@ group :test do
   gem 'rspec-mocks'
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'faker'
 end

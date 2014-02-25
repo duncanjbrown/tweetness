@@ -7,12 +7,19 @@ module BrowserTwitter
     end
 
     def save_tweet(tweet)
-      Tweet.create( 
-        :text => tweet.text,
-        :url  => 'not yet',
-        :tweet_id => tweet.id,
-        :user => tweet.user.username,
-        :date => tweet.created_at )
+
+      t = Tweet.new( 
+                    :text => tweet.text,
+                    :tweet_id => tweet.id,
+                    :user => tweet.user.username,
+                    :date => tweet.created_at )
+      urls = t.find_url 
+      if urls.any? 
+        t.url = urls
+        t.save!
+        t
+      else
+      end
     end
 
     def get_tweets

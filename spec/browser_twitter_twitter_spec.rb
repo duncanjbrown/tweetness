@@ -20,12 +20,19 @@ describe BrowserTwitter::Twitter do
       @twitter.latest_id.should be nil
     end
 
-    it "returns the latest id when tweets are available" do 
+    it "returns an id when tweets are available" do 
       tweet = create(:tweet)
       Tweet.count.should be 1
-      Tweet.last.tweet_id.should eq "123"
+      @twitter.latest_id.should eq "123"
     end
   
+    it "returns the last-inserted ID when multiple tweets are available" do 
+      tweet = create(:tweet, { tweet_id: "abc" })
+      tweet = create(:tweet, { tweet_id: "def" })
+      Tweet.count.should be 2
+      @twitter.latest_id.should eq "def"
+    end
+
   end
 
 
