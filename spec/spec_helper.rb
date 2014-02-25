@@ -2,7 +2,7 @@ require 'yaml'
 require 'data_mapper'
 require 'database_cleaner'
 require 'factory_girl'
-require_relative '../lib/model.rb'
+require_relative '../lib/tweet.rb'
 
 RSpec.configure do |config|
   db_config = YAML.load_file('db/config.yml')

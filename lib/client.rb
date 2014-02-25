@@ -7,7 +7,6 @@ module BrowserTwitter
     end
 
     def save_tweet(tweet)
-
       t = Tweet.new( 
                     :text => tweet.text,
                     :tweet_id => tweet.id,

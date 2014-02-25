@@ -19,6 +19,7 @@ class Tweet
 
   def find_url
     url = URI.extract(self.text)
+    url = url.select { |url| !url.end_with? ':' }
     if url 
       return url
     else

@@ -1,4 +1,5 @@
 #/usr/bin/env ruby
 Dir["./lib/*.rb"].each {|file| require file }
 
-app = BrowserTwitter::Client.new(BrowserTwitter::Twitter)
+app = BrowserTwitter::Client.new(BrowserTwitter::Twitter.new)
+app.get_tweets!
