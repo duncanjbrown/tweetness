@@ -27,6 +27,12 @@ class Tweet
     end
   end
 
+  class << self 
+    def highest_id
+      Tweet.last.id
+    end
+  end
+
 end
 
 DataMapper.finalize
