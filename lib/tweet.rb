@@ -12,7 +12,7 @@ class Tweet
   property :id,         Serial
   property :user,      String  
   property :text,       Text    
-  property :url,        Text
+  property :url,        Object
   property :date,        DateTime
   property :tweet_id,    String
   property :created_at, DateTime 

@@ -4,7 +4,6 @@ gem 'twitter'
 gem 'sqlite3'
 gem 'datamapper'
 gem 'dm-sqlite-adapter'
-gem 'standalone_migrations'
 
 group :test do 
   gem 'rspec'

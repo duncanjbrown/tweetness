@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'client.rb'
-require 'browser_twitter.rb'
+require 'twitter_client.rb'
 
 describe BrowserTwitter::Client do 
 
@@ -45,6 +45,13 @@ describe BrowserTwitter::Client do
       Tweet.count.should > 100
     end
      
+  end
+
+  describe "#update_feed!" do 
+    it "writes an xml file to disk" do 
+      @client.get_tweets!
+      @client.update_feed!
+    end
   end
 
 end

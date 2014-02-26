@@ -1,2 +1,2 @@
-require_relative 'model.rb'
+require_relative '../lib/tweet.rb'
 DataMapper.auto_migrate!

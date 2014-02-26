@@ -13,6 +13,7 @@ FactoryGirl.define do
 
     trait :with_url do 
       text Faker::Internet.url
+      url { [Faker::Internet.url] }
     end
 
     trait :retweet do 

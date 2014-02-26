@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'browser_twitter.rb'
+require 'twitter_client.rb'
 
 describe BrowserTwitter::Twitter do 
 

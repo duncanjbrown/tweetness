@@ -1,8 +1,11 @@
+require 'yaml'
+
 module BrowserTwitter 
 
   class Client
 
     def initialize(twitter)
+      @config = YAML.load_file( 'config/preferences.yml' )
       @twitter = twitter
     end
 
@@ -27,6 +30,13 @@ module BrowserTwitter
 
     def get_tweets!
       get_tweets.map { |t| save_tweet(t) }
+    end
+
+    def update_feed!
+      feed = Feed.new.build(Tweet.all)
+      File.open(@config["rss_file"], 'w') do |f|
+        f.write(feed.to_s)
+      end
     end
 
   end
