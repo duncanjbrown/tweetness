@@ -2,6 +2,7 @@ require 'data_mapper'
 require 'sqlite3'
 require 'yaml'
 require 'uri'
+require 'net/http'
 
 config = YAML.load_file('db/config.yml');
 DataMapper.setup(:default, config["development"])
@@ -21,7 +22,7 @@ class Tweet
     url = URI.extract(self.text)
     url = url.select { |url| !url.end_with? ':' }
     if url 
-      return url
+      return url.map { |url| lengthen_url(url) }
     else
       return nil
     end
@@ -32,6 +33,15 @@ class Tweet
       Tweet.last.id
     end
   end
+
+  private 
+    def lengthen_url(url)
+      begin
+        uri = URI(url)
+        Net::HTTP.new(uri.host, uri.port).get(uri.path).header['location']
+      rescue
+      end
+    end
 
 end
 

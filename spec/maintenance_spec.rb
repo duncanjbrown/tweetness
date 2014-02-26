@@ -7,6 +7,10 @@ describe BrowserTwitter::Maintenance do
     @maintenance = BrowserTwitter::Maintenance.new
   end
 
+  it "noops when there are no tweets" do 
+    @maintenance.clip( 10 )
+  end
+
   it "cleans the 11th tweet from the db" do 
     11.times do |i| 
       create(:tweet, :with_url)

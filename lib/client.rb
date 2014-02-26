@@ -4,9 +4,10 @@ module BrowserTwitter
 
   class Client
 
-    def initialize(twitter)
+    def initialize(twitter, maintenance)
       @config = YAML.load_file( 'config/preferences.yml' )
       @twitter = twitter
+      @maintenance = maintenance
     end
 
     def save_tweet(tweet)
@@ -29,7 +30,9 @@ module BrowserTwitter
     end
 
     def get_tweets!
+      @maintenance.clip(@config['tweets'])
       get_tweets.map { |t| save_tweet(t) }
+      update_feed!
     end
 
     def update_feed!

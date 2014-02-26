@@ -11,7 +11,8 @@ describe BrowserTwitter::Client do
 
   before(:each) do 
     @twitter = double('BrowserTwitter::Twitter', load_tweets: @cached_tweets)
-    @client = BrowserTwitter::Client.new(@twitter)
+    @maintenance = double('BrowserTwitter::Maintenance', clip: nil )
+    @client = BrowserTwitter::Client.new(@twitter, @maintenance)
   end
 
   describe '#get_tweets' do 
