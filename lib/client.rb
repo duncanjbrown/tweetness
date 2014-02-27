@@ -26,7 +26,7 @@ module BrowserTwitter
     end
 
     def get_tweets
-      @twitter.load_tweets.reverse
+      @twitter.load_tweets
     end
 
     def get_tweets!
