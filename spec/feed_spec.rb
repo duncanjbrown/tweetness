@@ -16,5 +16,10 @@ describe BrowserTwitter::Feed do
       @feed.build(Tweet.all)  
       @feed.items.count.should be 100  
     end
+
+    it "survives a malformed tweet" do 
+      create(:tweet) # without url
+      @feed.build(Tweet.all)  
+    end
   end
 end

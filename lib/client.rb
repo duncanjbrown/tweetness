@@ -12,10 +12,10 @@ module BrowserTwitter
 
     def save_tweet(tweet)
       t = Tweet.new( 
-                    :text => tweet.text,
-                    :tweet_id => tweet.id,
-                    :user => tweet.user.username,
-                    :date => tweet.created_at )
+        :text => tweet.text,
+        :tweet_id => tweet.id,
+        :user => tweet.user.username,
+        :date => tweet.created_at )
       urls = t.find_url 
       if urls.any? 
         t.url = urls
@@ -26,7 +26,7 @@ module BrowserTwitter
     end
 
     def get_tweets
-      @twitter.load_tweets
+      @twitter.load_tweets.reverse
     end
 
     def get_tweets!
