@@ -30,8 +30,14 @@ module BrowserTwitter
     end
 
     def get_tweets!
+      puts "Cleaning Database..."
       @maintenance.clip(@config['tweets'])
-      get_tweets.map { |t| save_tweet(t) }
+      puts "Loading Tweets..."
+      get_tweets.map do |t| 
+        print "."
+        save_tweet(t) 
+      end
+      puts "\rWriting RSS Feed"
       update_feed!
     end
 
