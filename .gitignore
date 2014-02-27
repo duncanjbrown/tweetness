@@ -1,0 +1,3 @@
+db/*.sqlite3
+views/feed.xml
+config/twitter.yml
