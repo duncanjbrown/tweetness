@@ -15,13 +15,13 @@ module BrowserTwitter
 
         tweets.each do |t|
           maker.items.new_item do |i|
-            next if !t.url.first
+            next if !t.url || !t.url.first
             i.title = "#{t.user} #{t.url.first}"
             i.link =  t.url.first
             i.guid.content = t.url.first
             i.guid.isPermaLink = true
             i.description = "#{t.user}: #{t.text}"
-            i.date = Time.now
+            i.date = t.date.to_s
           end
         end
       end
