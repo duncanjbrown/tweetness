@@ -10,8 +10,10 @@ describe BrowserTwitter::Client do
   end
 
   before(:each) do 
-    @twitter = double('BrowserTwitter::Twitter', load_tweets: @cached_tweets)
+    @twitter = double('BrowserTwitter::Twitter', load_tweets: @cached_tweets )
     @maintenance = double('BrowserTwitter::Maintenance', clip: nil )
+    allow_any_instance_of(Tweet).to receive(:lengthen_url).and_return(Faker::Internet.url)
+
     @client = BrowserTwitter::Client.new(@twitter, @maintenance)
   end
 

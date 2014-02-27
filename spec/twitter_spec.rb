@@ -13,6 +13,13 @@ describe BrowserTwitter::Twitter do
     allow(@twitter).to receive(:load_tweets).and_return @cached_tweets
   end
 
+  describe "#load_tweets" do 
+    it "returns tweets in descending date order" do 
+      tweets = @twitter.load_tweets
+      tweets[0].created_at.should be > tweets[1].created_at
+    end
+  end
+
   describe "latest_id" do 
 
     it "returns nil when no tweets are available" do 

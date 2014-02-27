@@ -15,6 +15,7 @@ module BrowserTwitter
 
         tweets.each do |t|
           maker.items.new_item do |i|
+            next if !t.url.first
             i.title = "#{t.user} #{t.url.first}"
             i.link =  t.url.first
             i.guid.content = t.url.first

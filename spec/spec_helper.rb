@@ -2,6 +2,7 @@ require 'yaml'
 require 'data_mapper'
 require 'database_cleaner'
 require 'factory_girl'
+require 'faker'
 
 require_relative '../lib/tweet.rb'
 
