@@ -39,6 +39,9 @@ module BrowserTwitter
       end
       puts "\rWriting RSS Feed"
       update_feed!
+      File.open('last_run', 'w') do |f|
+        f.write( Time.new.inspect )
+      end
     end
 
     def update_feed!
