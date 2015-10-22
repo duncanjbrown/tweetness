@@ -14,7 +14,7 @@ module BrowserTwitter
       t = Tweet.new( 
         :text => tweet.text,
         :tweet_id => tweet.id,
-        :user => tweet.user.username,
+        :user => tweet.user.screen_name,
         :date => tweet.created_at )
       urls = t.find_url 
       if urls.any? 
